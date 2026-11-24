@@ -65,7 +65,7 @@ const tips = [
 
 function CheckIcon() {
   return (
-    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="size-5 flex-none text-indigo-600">
+    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="size-5 flex-none text-sky-600">
       <path
         fillRule="evenodd"
         d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
@@ -89,11 +89,11 @@ function AlertIcon() {
 
 export default function Information() {
   return (
-    <section id="information" className="scroll-mt-16 bg-gray-50 py-24 sm:py-32">
+    <section id="information" className="scroll-mt-18 bg-stone-200 py-24 dark:bg-stone-950 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Intro */}
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-base/7 font-semibold text-indigo-600">The basics</h2>
+          <h2 className="text-base/7 font-semibold text-sky-600">The basics</h2>
           <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
             What tretinoin is, and why it works
           </p>
@@ -138,8 +138,8 @@ export default function Information() {
         </div>
 
         {/* Simple routine */}
-        <FadeIn className="mx-auto mt-24 max-w-2xl text-center">
-          <h2 className="text-base/7 font-semibold text-indigo-600">Keep it simple</h2>
+        <FadeIn id="routine" className="mx-auto mt-24 max-w-2xl text-center">
+          <h2 className="text-base/7 font-semibold text-sky-600">Keep it simple</h2>
           <p className="mt-2 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
             A routine you&apos;ll actually stick to
           </p>
@@ -161,7 +161,7 @@ export default function Information() {
               <ol className="mt-6 space-y-4">
                 {steps.map((step, index) => (
                   <li key={step} className="flex items-start gap-x-3 text-sm/6 text-gray-600">
-                    <span className="flex size-6 flex-none items-center justify-center rounded-full bg-indigo-600 text-xs font-semibold text-white">
+                    <span className="flex size-6 flex-none items-center justify-center rounded-full bg-sky-600 text-xs font-semibold text-white">
                       {index + 1}
                     </span>
                     {step}
@@ -173,9 +173,9 @@ export default function Information() {
         </div>
 
         {/* Starting out */}
-        <FadeIn className="mx-auto mt-12 max-w-2xl rounded-2xl bg-indigo-600 p-8 text-white lg:max-w-4xl">
+        <FadeIn className="mx-auto mt-12 max-w-2xl rounded-2xl bg-sky-600 p-8 text-white lg:max-w-4xl">
           <h3 className="text-lg font-semibold">Start low, go slow</h3>
-          <ul className="mt-4 space-y-3 text-sm/6 text-indigo-100">
+          <ul className="mt-4 space-y-3 text-sm/6 text-sky-100">
             {tips.map((tip) => (
               <li key={tip} className="flex gap-x-3">
                 <span aria-hidden="true" className="text-white">

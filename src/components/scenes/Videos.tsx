@@ -3,10 +3,10 @@ import { videos } from "@/data/videos";
 
 export default function Videos() {
   return (
-    <section id="videos" className="scroll-mt-16 bg-white py-24 sm:py-32">
+    <section id="videos" className="scroll-mt-18 bg-stone-200 py-24 dark:bg-stone-950 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-base/7 font-semibold text-indigo-600">Hear it from doctors</h2>
+          <h2 className="text-base/7 font-semibold text-sky-600">Hear it from doctors</h2>
           <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
             Don&apos;t just take my word for it
           </p>
@@ -36,7 +36,7 @@ export default function Videos() {
                   )}
                 </div>
                 <h3 className="mt-6 text-lg/6 font-semibold text-gray-900">{video.title}</h3>
-                <p className="mt-1 text-sm font-medium text-indigo-600">{video.doctor}</p>
+                <p className="mt-1 text-sm font-medium text-sky-600">{video.doctor}</p>
                 <p className="mt-3 text-sm/6 text-gray-600">{video.description}</p>
               </article>
             </FadeIn>
