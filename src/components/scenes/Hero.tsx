@@ -1,24 +1,29 @@
 import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 
 const steps = [
   {
     number: 1,
     label: "Cleanse",
-    middle: null,
+    color: "text-amber-600 dark:text-amber-400",
+    image: null,
     // Lowest tile — steps rise left to right.
     column: "pt-16 sm:pt-80 lg:pt-36 xl:pt-80",
   },
   {
     number: 2,
     label: "Treat",
-    middle: "Tretinoin",
+    color: "text-sky-600 dark:text-sky-400",
+    // Square photo shown whole inside the 2:3 tile; bg matches the photo's backdrop.
+    image: { src: "/images/tretinoin-cream.jpg", alt: "Tretinoin cream tube and box", bg: "bg-[#d0d4d8]" },
     column: "pt-8 sm:pt-52 lg:pt-36",
   },
   {
     number: 3,
     label: "Protect",
-    middle: null,
+    color: "text-emerald-600 dark:text-emerald-400",
+    image: null,
     column: "pt-0",
   },
 ];
@@ -26,34 +31,36 @@ const steps = [
 function StepTile({
   number,
   label,
-  middle,
+  color,
+  image,
 }: {
   number: number;
   label: string;
-  middle: string | null;
+  color: string;
+  image: { src: string; alt: string; bg: string } | null;
 }) {
   return (
-    <div className="relative flex aspect-2/3 w-full flex-col rounded-xl bg-white p-3 shadow-lg sm:p-5 dark:bg-stone-900">
-      <div className="flex items-baseline gap-1.5 sm:gap-2">
-        <span className="text-3xl font-semibold tracking-tight text-sky-600 sm:text-6xl dark:text-sky-400">
-          {number}
-        </span>
-        <span className="text-sm font-semibold text-gray-900 sm:text-xl dark:text-white">{label}</span>
-      </div>
-      {/* Middle: the product for this step, or a "?" when it's up to you. */}
-      <div className="flex flex-1 items-center justify-center">
-        {middle ? (
-          <span className="text-sm font-semibold text-gray-900 sm:text-xl dark:text-white">
-            {middle}
-          </span>
+    <div>
+      {/* Picture: the product for this step, or a "?" when it's up to you. */}
+      <div
+        className={`relative flex aspect-2/3 w-full items-center justify-center overflow-hidden rounded-xl shadow-lg ${image ? image.bg : "bg-white dark:bg-taupe-900"}`}
+      >
+        {image ? (
+          <Image src={image.src} alt={image.alt} fill sizes="176px" className="object-contain" />
         ) : (
           <QuestionMarkCircleIcon
             aria-label="Your choice"
-            className="size-10 text-gray-400 sm:size-16 dark:text-stone-500"
+            className="size-10 text-zinc-400 sm:size-16 dark:text-zinc-500"
           />
         )}
+        <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset dark:ring-white/10" />
       </div>
-      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset dark:ring-white/10" />
+      <div className="mt-3 flex items-baseline gap-1.5 sm:mt-4 sm:gap-2">
+        <span className={`text-3xl font-semibold tracking-tight sm:text-6xl ${color}`}>
+          {number}
+        </span>
+        <span className="text-sm font-semibold text-zinc-900 sm:text-xl dark:text-zinc-100">{label}</span>
+      </div>
     </div>
   );
 }
@@ -79,18 +86,18 @@ export default function Hero() {
           <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
             <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
               <FadeIn className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-                <h1 className="text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl dark:text-white">
+                <h1 className="text-5xl font-semibold tracking-tight text-pretty text-zinc-900 sm:text-7xl dark:text-zinc-100">
                   Tretinoin
                 </h1>
-                <span className="text-lg font-medium text-gray-600 sm:text-2xl dark:text-gray-400">
+                <span className="text-lg font-medium text-zinc-700 sm:text-2xl dark:text-zinc-300">
                   <span className="sr-only">Pronounced </span>/ TRET-ih-no-in /
                 </span>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <p className="mt-8 text-lg font-medium text-pretty text-gray-700 sm:max-w-md sm:text-xl/8 lg:max-w-none dark:text-gray-300">
-                  Learn about tretinoin to get a mental model for skincare. Tretinoin is a good thing
-                  to build a routine around and then you can fill in the other two blanks with
-                  products of your choice.
+                <p className="mt-8 text-lg font-medium text-pretty text-zinc-700 sm:max-w-md sm:text-xl/8 lg:max-w-none dark:text-zinc-300">
+                  Looksmaxxing? Anti-aging? Acne? Whatever your goals are with skincare, learning
+                  about Tretinoin and building a skincare routine around it is likely the solution
+                  you are looking for.
                 </p>
               </FadeIn>
             </div>
@@ -103,7 +110,7 @@ export default function Hero() {
                   delay={0.15 + i * 0.1}
                   className={`max-w-44 min-w-0 flex-1 sm:w-44 sm:flex-none ${step.column}`}
                 >
-                  <StepTile number={step.number} label={step.label} middle={step.middle} />
+                  <StepTile number={step.number} label={step.label} color={step.color} image={step.image} />
                 </FadeIn>
               ))}
             </div>

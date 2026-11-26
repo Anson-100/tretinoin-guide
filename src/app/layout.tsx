@@ -29,7 +29,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} bg-stone-200 dark:bg-stone-950 font-sans text-gray-900 antialiased`}
+        className={`${inter.className} bg-taupe-200 dark:bg-taupe-950 font-sans text-zinc-700 dark:text-zinc-300 antialiased`}
       >
         {children}
       </body>

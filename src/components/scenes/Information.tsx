@@ -1,192 +1,351 @@
+import Image from "next/image";
+import {
+  ArrowDownIcon,
+  CheckIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/20/solid";
 import FadeIn from "@/components/FadeIn";
 
-const benefits = [
+const points = [
   {
-    title: "Speeds up cell turnover",
-    description:
-      "Tretinoin is a retinoid (a vitamin A derivative) that encourages skin to shed and renew itself faster, which helps smooth rough texture.",
+    title: "Cleanse.",
+    color: "text-amber-600 dark:text-amber-400",
+    body: "Pollution in the air, dirty pillow cases (as mentioned above), touching our face after touching everything else. As a result of going about our business and traveling to our destinations, our skin gets dirty. We need to clean it with a cleanser of some sort.",
   },
   {
-    title: "Clears and prevents acne",
-    description:
-      "Faster turnover helps keep pores from clogging. It's been prescribed for acne for decades.",
+    title: "Treat.",
+    color: "text-sky-600 dark:text-sky-400",
+    body: "This step is where the magic happens. This step is where the transformation happens. This step is what probably 90% of the million products out there target. The main product you should use for this step is Tretinoin and it should be applied at night since it makes your skin sensitive to sunlight.",
   },
   {
-    title: "Softens fine lines over time",
-    description:
-      "With consistent long-term use, it's shown to support collagen and improve the look of fine lines and sun damage.",
-  },
-  {
-    title: "Evens out tone",
-    description:
-      "It can gradually fade dark spots and uneven pigmentation, giving skin a more even look.",
+    title: "Protect.",
+    color: "text-emerald-600 dark:text-emerald-400",
+    body: "After cleaning your skin to make it not dirty and putting something on your skin to make it look better, you need to protect this investment and lock in the changes. This is accomplished with moisturizers and sunscreens.",
   },
 ];
 
-const drawbacks = [
+const retinoidEffects = [
   {
-    title: "An adjustment period",
-    description:
-      "Dryness, flaking, redness, and stinging are common in the first weeks while your skin adjusts.",
+    title: "Boost collagen production.",
+    body: "Collagen is a protein in your skin's deeper layer. It keeps skin firm, smooth, and full. Your body starts making less of it in your mid-20s, and sun exposure breaks it down at every age. Retinoids help your skin make more collagen. That makes it as much about prevention as repair: starting earlier means protecting the collagen you have instead of trying to rebuild it later.",
   },
   {
-    title: "Possible early breakouts",
-    description:
-      "Some people get a temporary flare of breakouts (often called the “purge”) when they start.",
-  },
-  {
-    title: "More sun sensitivity",
-    description:
-      "Your skin burns more easily, so daily sunscreen stops being optional.",
-  },
-  {
-    title: "Prescription and patience",
-    description:
-      "In the US it requires a prescription, it isn't recommended during pregnancy, and results take months, not weeks.",
+    title: "Speed up cell turnover.",
+    body: "The outer layer of your skin is always renewing itself. New cells form underneath, rise to the surface, and the old cells slough off onto your clothes or bedding or go down the shower drain. When this process is sluggish or uneven, dead cells build up on the surface and stick together inside pores. The result is clogs, breakouts, rough texture, and a dull complexion. Retinoids speed up and normalize this cycle, which keeps pores clear and skin smoother and brighter. Faster turnover also means pigmented cells shed sooner, so dark spots, uneven tone, and leftover acne marks fade faster. That's why it's been a go-to acne treatment for decades, long before anyone used it for wrinkles.",
   },
 ];
 
-const routine = {
-  morning: ["Gentle cleanser (or just water)", "Moisturizer", "Sunscreen, SPF 30 or higher"],
-  night: [
-    "Gentle cleanser",
-    "Wait until skin is fully dry",
-    "A pea-sized amount of tretinoin for the whole face",
-    "Moisturizer",
-  ],
-};
-
-const tips = [
-  "Start 2–3 nights a week and build up as your skin tolerates it.",
-  "Begin with a low strength. Stronger isn't better at the start.",
-  "Skip other strong actives (acids, scrubs) until your skin has adjusted.",
-  "Talk to a dermatologist or telehealth provider about whether it's right for you.",
+// Feed: how vitamin A derivatives convert in the skin, ending at the active form.
+const retinoidConversion = [
+  {
+    name: "Retinyl esters",
+    stepsAway: 3,
+    content:
+      "The weakest starting point, usually found in cheaper products. Your skin has to convert it to retinol, then retinaldehyde, then retinoic acid, losing strength every step of the way.",
+    availability: "Over-the-counter",
+    icon: ArrowDownIcon,
+    iconBackground: "bg-zinc-300 dark:bg-zinc-700",
+  },
+  {
+    name: "Retinol",
+    stepsAway: 2,
+    content:
+      "The most common over-the-counter retinoid. Your skin has to convert it to retinaldehyde, then to retinoic acid.",
+    availability: "Over-the-counter",
+    icon: ArrowDownIcon,
+    iconBackground: "bg-zinc-400 dark:bg-zinc-600",
+  },
+  {
+    name: "Retinaldehyde",
+    stepsAway: 1,
+    content:
+      "One step away. Your skin still has to convert it to retinoic acid before it does anything.",
+    availability: "Over-the-counter",
+    icon: ArrowDownIcon,
+    iconBackground: "bg-zinc-500",
+  },
+  {
+    name: "Retinoic acid (Tretinoin)",
+    stepsAway: 0,
+    content:
+      "The final form. This is what actually does the work in your skin cells. No conversion, no lost strength.",
+    availability: "Prescription",
+    icon: CheckIcon,
+    iconBackground: "bg-sky-600 dark:bg-sky-500",
+  },
 ];
-
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="size-5 flex-none text-sky-600">
-      <path
-        fillRule="evenodd"
-        d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
-
-function AlertIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="size-5 flex-none text-amber-500">
-      <path
-        fillRule="evenodd"
-        d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
 
 export default function Information() {
   return (
-    <section id="information" className="scroll-mt-18 bg-stone-200 py-24 dark:bg-stone-950 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Intro */}
-        <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-base/7 font-semibold text-sky-600">The basics</h2>
-          <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-            What tretinoin is, and why it works
+    <section
+      id="information"
+      className="scroll-mt-20 px-6 py-24 sm:py-32 lg:px-8"
+    >
+      <FadeIn className="mx-auto max-w-3xl text-lg/8 text-zinc-700 dark:text-zinc-400">
+        <h2 className="text-4xl font-semibold tracking-tight text-pretty text-zinc-800 sm:text-5xl dark:text-zinc-200">
+          What is Tretinoin? What is even the point of this web page?
+        </h2>
+        <p className="mt-8 text-xl/8 dark:text-zinc-300">
+          I&apos;ve watched dozens of hours of skincare videos and tried dozens
+          of products. As you can probably imagine, many of these videos were
+          dumb and many of the products I tried weren&apos;t very effective,
+          despite some of them being quite pricey.
+        </p>{" "}
+        <p className="mt-6 text-xl/8 dark:text-zinc-300">
+          It seems there are two main causes of friction when it comes to
+          learning something new: knowing where to start and filtering out all
+          of the information (and products) you don&apos;t actually need.
+        </p>
+        <p className="mt-6 text-xl/8 dark:text-zinc-300">
+          This web page is meant to present things in a way where you can
+          quickly form a basic mental model for skincare and get started with
+          the process in the most effective way possible.
+        </p>
+        <h3 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200">
+          What is skincare?
+        </h3>
+        <p className="mt-6">
+          Skincare is caring for your skin. How does one care for their skin?
+          Well, in addition to all the topical products you put on your face and
+          neck and body, what you eat and drink (or don&apos;t eat and drink),
+          the cleanliness of your pillowcases, and the laundry detergent you use
+          all play a role to some degree. The scope of this page is focused
+          mainly on the products you put on your skin — especially the face and
+          neck since that is to what people refer when they use the term
+          &ldquo;complexion&rdquo;.
+        </p>
+        <div className="mt-10 max-w-2xl">
+          <h3 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200">
+            There are a million products out there. How many do I need? When do
+            I use them?
+          </h3>
+          <p className="mt-6">
+            Visually scanning the selection at Wal-Mart or Ulta or Target can
+            make your brain hurt. How do you know what you need, what you
+            don&apos;t need, and what all of these products do? Well, just
+            remember, since any skincare routine has 3 steps, every product out
+            there falls into one of 3 main categories.
           </p>
-          <p className="mt-6 text-lg/8 text-gray-600">
-            Tretinoin is a prescription retinoid. Instead of masking problems, it changes how your
-            skin behaves over time. That&apos;s why it&apos;s a strong foundation to build the rest
-            of a routine around.
+          <h3 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200">
+            My skincare only needs 3 steps? Does that mean I only need 3
+            products? Which ones?
+          </h3>
+          <p className="mt-6">
+            You probably noticed the cards at the top of this page. Think of
+            that when you are looking at products and deciding which ones to
+            buy. And, yes, less is more when it comes to the amount of products
+            involved in your routine. After all, we all have lives to live.
           </p>
-        </FadeIn>
-
-        {/* Benefits + drawbacks */}
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-2">
-          <FadeIn className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-200">
-            <h3 className="text-xl font-semibold text-gray-900">Benefits</h3>
-            <dl className="mt-6 space-y-6">
-              {benefits.map((item) => (
-                <div key={item.title} className="flex gap-x-3">
-                  <CheckIcon />
-                  <div>
-                    <dt className="font-semibold text-gray-900">{item.title}</dt>
-                    <dd className="mt-1 text-sm/6 text-gray-600">{item.description}</dd>
-                  </div>
-                </div>
-              ))}
-            </dl>
-          </FadeIn>
-
-          <FadeIn delay={0.1} className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-200">
-            <h3 className="text-xl font-semibold text-gray-900">Drawbacks</h3>
-            <dl className="mt-6 space-y-6">
-              {drawbacks.map((item) => (
-                <div key={item.title} className="flex gap-x-3">
-                  <AlertIcon />
-                  <div>
-                    <dt className="font-semibold text-gray-900">{item.title}</dt>
-                    <dd className="mt-1 text-sm/6 text-gray-600">{item.description}</dd>
-                  </div>
-                </div>
-              ))}
-            </dl>
-          </FadeIn>
-        </div>
-
-        {/* Simple routine */}
-        <FadeIn id="routine" className="mx-auto mt-24 max-w-2xl text-center">
-          <h2 className="text-base/7 font-semibold text-sky-600">Keep it simple</h2>
-          <p className="mt-2 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
-            A routine you&apos;ll actually stick to
-          </p>
-        </FadeIn>
-
-        <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-2">
-          {(
-            [
-              ["Morning", routine.morning],
-              ["Night", routine.night],
-            ] as const
-          ).map(([label, steps], i) => (
-            <FadeIn
-              key={label}
-              delay={i * 0.1}
-              className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-200"
-            >
-              <h3 className="text-lg font-semibold text-gray-900">{label}</h3>
-              <ol className="mt-6 space-y-4">
-                {steps.map((step, index) => (
-                  <li key={step} className="flex items-start gap-x-3 text-sm/6 text-gray-600">
-                    <span className="flex size-6 flex-none items-center justify-center rounded-full bg-sky-600 text-xs font-semibold text-white">
-                      {index + 1}
-                    </span>
-                    {step}
-                  </li>
-                ))}
-              </ol>
-            </FadeIn>
-          ))}
-        </div>
-
-        {/* Starting out */}
-        <FadeIn className="mx-auto mt-12 max-w-2xl rounded-2xl bg-sky-600 p-8 text-white lg:max-w-4xl">
-          <h3 className="text-lg font-semibold">Start low, go slow</h3>
-          <ul className="mt-4 space-y-3 text-sm/6 text-sky-100">
-            {tips.map((tip) => (
-              <li key={tip} className="flex gap-x-3">
-                <span aria-hidden="true" className="text-white">
-                  •
+          <ol role="list" className="mt-8 max-w-xl space-y-8">
+            {points.map((point, i) => (
+              <li key={point.title} className="flex items-baseline gap-x-3">
+                <span
+                  className={`w-6 flex-none text-2xl font-semibold ${point.color}`}
+                >
+                  {i + 1}
                 </span>
-                {tip}
+                <span>
+                  <strong className="font-semibold text-zinc-800 text-xl dark:text-zinc-200">
+                    {point.title}
+                  </strong>{" "}
+                  {point.body}
+                </span>
               </li>
             ))}
-          </ul>
-        </FadeIn>
-      </div>
+          </ol>
+          <p className="mt-8">
+            Seriously, that is it. Any video you watch, blog entry you read, or
+            product advertistement you are subjected to can be filtered through
+            this mental model. You just need to fill in the blanks with the
+            right products for you.
+          </p>
+          <h3 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200">
+            Great, so what is the big deal about Tretinoin? Why should this be
+            the nucleus of a person&apos;s routine?
+          </h3>
+          <p className="mt-6">
+            Tretinoin is a prescription product. It has been around since 1957.
+            It has decades of research behind it. It is a retinoid, meaning it
+            is a vitamin A derivative.
+          </p>
+          <h3 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200">
+            What is a retinoid? What does it do?
+          </h3>
+          <p className="mt-6">
+            As mentioned above, retinoids are vitamin A derivatives. You may
+            have already heard of them. There are many, many, many retinoid
+            products out there that are available over-the-counter.
+          </p>
+          <p className="mt-6">
+            Retinoids basically do two things: boost collagen production and
+            optimize the natural cell-turnover process your skin is doing
+            anyway.
+          </p>
+
+          <ol role="list" className="mt-8 max-w-xl space-y-8">
+            {retinoidEffects.map((effect, i) => (
+              <li key={effect.title} className="flex items-baseline gap-x-3">
+                <span className="w-5 flex-none text-lg font-semibold text-sky-600 dark:text-sky-400">
+                  {i + 1}
+                </span>
+                <span>
+                  <strong className="font-semibold text-zinc-800 text-xl dark:text-zinc-200">
+                    {effect.title}
+                  </strong>{" "}
+                  {effect.body}
+                </span>
+              </li>
+            ))}
+          </ol>
+          <h3 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200">
+            Ok, if there are so many over-the-counter retinoid options, why go
+            through the trouble of getting a Tretinoin prescription?
+          </h3>
+          <p className="mt-6">
+            Retinoids are available in 4 main forms: retinyl esters, retinol,
+            retinaldehyde, and retinoic acid. Pretty much every over-the-counter
+            product is either a retinyl ester, retinol, or retinaldehyde. They
+            can do some good, but their strength is weakened by each conversion
+            step required to activate them. Might as well get straight to the
+            point and put the activated version on your face and neck to get the
+            full effects.
+          </p>
+          <div className="mt-10 flow-root">
+            <ul role="list" className="-mb-8">
+              {retinoidConversion.map((stage, stageIdx) => (
+                <li key={stage.name}>
+                  <div className="relative pb-8">
+                    {stageIdx !== retinoidConversion.length - 1 ? (
+                      <span
+                        aria-hidden="true"
+                        className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-zinc-300 dark:bg-zinc-700"
+                      />
+                    ) : null}
+                    <div className="relative flex gap-x-4">
+                      <div>
+                        <span
+                          className={`flex size-8 items-center justify-center rounded-full ring-8 ring-taupe-200 dark:ring-taupe-950 ${stage.iconBackground}`}
+                        >
+                          <stage.icon
+                            aria-hidden="true"
+                            className="size-5 text-white"
+                          />
+                        </span>
+                      </div>
+                      <div className="flex min-w-0 flex-1 justify-between gap-x-4">
+                        <p>
+                          <strong className="text-xl font-semibold text-zinc-800 dark:text-zinc-200">
+                            {stage.name}
+                          </strong>
+                          <br />
+                          {stage.content}
+                        </p>
+                        <div className="flex flex-col items-end gap-y-1 text-right whitespace-nowrap">
+                          <span className="font-semibold text-zinc-800 dark:text-zinc-200">
+                            {stage.stepsAway === 0
+                              ? "Active"
+                              : `${stage.stepsAway} step${stage.stepsAway > 1 ? "s" : ""} away`}
+                          </span>
+                          <div className="flex gap-x-1" aria-hidden="true">
+                            {[0, 1, 2, 3].map((n) => (
+                              <span
+                                key={n}
+                                className={`h-2 w-4 rounded-sm ${
+                                  n < 4 - stage.stepsAway
+                                    ? stage.stepsAway === 0
+                                      ? "bg-sky-600 dark:bg-sky-500"
+                                      : "bg-zinc-500 dark:bg-zinc-400"
+                                    : "ring-1 ring-zinc-400 ring-inset dark:bg-zinc-800 dark:ring-0"
+                                }`}
+                              />
+                            ))}
+                          </div>
+                          <span>{stage.availability}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <h3 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200">
+            Ok, so if there are a ton of over the
+          </h3>
+          <p className="mt-6">
+            As mentioned above, retinoids are vitamin A derivatives. You may
+            have already heard of them. There are a million retinoid products
+            out there that are available over the counter.
+          </p>
+          <figure className="mt-10 border-l border-sky-600 pl-9 dark:border-sky-400">
+            <blockquote className="font-semibold text-zinc-800 dark:text-zinc-200">
+              <p>
+                &ldquo;Vel ultricies morbi odio facilisi ultrices accumsan donec
+                lacus purus. Lectus nibh ullamcorper ac dictum justo in euismod.
+                Risus aenean ut elit massa. In amet aliquet eget cras. Sem
+                volutpat enim tristique.&rdquo;
+              </p>
+            </blockquote>
+            <figcaption className="mt-6 flex gap-x-4">
+              <Image
+                alt=""
+                src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                width={24}
+                height={24}
+                className="mt-1 size-6 flex-none rounded-full bg-zinc-200 dark:bg-zinc-800"
+              />
+              <div>
+                <strong className="font-semibold text-zinc-800 dark:text-zinc-200">
+                  Maria Hill
+                </strong>{" "}
+                – Marketing Manager
+              </div>
+            </figcaption>
+          </figure>
+          <p className="mt-10">
+            Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
+            enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
+            praesent donec est. Odio penatibus risus viverra tellus varius sit
+            neque erat velit.
+          </p>
+        </div>
+        <figure className="mt-16">
+          <Image
+            alt=""
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=80&facepad=3"
+            width={1310}
+            height={873}
+            sizes="(min-width: 768px) 768px, 100vw"
+            className="aspect-video rounded-xl bg-zinc-200 object-cover dark:bg-zinc-800"
+          />
+          <figcaption className="mt-4 flex gap-x-2">
+            <InformationCircleIcon
+              aria-hidden="true"
+              className="mt-1.5 size-5 flex-none text-zinc-400 dark:text-zinc-600"
+            />
+            Faucibus commodo massa rhoncus, volutpat.
+          </figcaption>
+        </figure>
+        <div className="mt-16 max-w-2xl">
+          <h3 className="text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200">
+            Everything you need to get up and running
+          </h3>
+          <p className="mt-6">
+            Purus morbi dignissim senectus mattis adipiscing. Amet, massa quam
+            varius orci dapibus volutpat cras. In amet eu ridiculus leo sodales
+            cursus tristique. Tincidunt sed tempus ut viverra ridiculus non
+            molestie. Gravida quis fringilla amet eget dui tempor dignissim.
+            Facilisis auctor venenatis varius nunc, congue erat ac. Cras
+            fermentum convallis quam.
+          </p>
+          <p className="mt-8">
+            Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
+            enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
+            praesent donec est. Odio penatibus risus viverra tellus varius sit
+            neque erat velit.
+          </p>
+        </div>
+      </FadeIn>
     </section>
   );
 }
