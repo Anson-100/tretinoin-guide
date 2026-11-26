@@ -161,7 +161,7 @@ export default function Information() {
           </p>
           <h3 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200">
             Great, so what is the big deal about Tretinoin? Why should this be
-            the nucleus of a person&apos;s routine?
+            the nucleus of my routine?
           </h3>
           <p className="mt-6">
             Tretinoin is a prescription product. It has been around since 1957.
@@ -269,6 +269,21 @@ export default function Information() {
               ))}
             </ul>
           </div>
+          <p className="mt-6">
+            That is the long and short of it. Retinoids are the GOAT of all
+            products in the step 2 treat category and Tretinoin is the GOAT of
+            retinoids for the reasons mentioned above.{" "}
+          </p>
+          <h3 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200">
+            Is a tretinoin prescription expensive?
+          </h3>
+          <p className="mt-6">
+            No. Even if you don&apos;t have health insurance and use GoodRX, you will
+            probably be out $30 to $70 at the most. And it will last you a few
+            months. You will need to get a doctor or nurse practicioner or
+            physician&apos;s assistant to prescribe it for you but, after that, you
+            are good to go.{" "}
+          </p>
           <h3 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200">
             Ok, so if there are a ton of over the
           </h3>

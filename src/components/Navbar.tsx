@@ -28,7 +28,7 @@ const iconProps = {
 const links: NavLink[] = [
   {
     id: "information",
-    label: "What is it?",
+    label: "Why?",
     icon: (
       <svg {...iconProps}>
         <path
