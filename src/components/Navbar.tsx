@@ -28,7 +28,7 @@ const iconProps = {
 const links: NavLink[] = [
   {
     id: "information",
-    label: "Why?",
+    label: "Why Tretinoin?",
     icon: (
       <svg {...iconProps}>
         <path
@@ -40,8 +40,8 @@ const links: NavLink[] = [
     ),
   },
   {
-    id: "routine",
-    label: "Routine",
+    id: "cleansers",
+    label: "Cleansers",
     icon: (
       <svg {...iconProps}>
         <path

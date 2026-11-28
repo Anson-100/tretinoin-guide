@@ -32,7 +32,7 @@ const retinoidEffects = [
   },
   {
     title: "Speed up cell turnover.",
-    body: "The outer layer of your skin is always renewing itself. New cells form underneath, rise to the surface, and the old cells slough off onto your clothes or bedding or go down the shower drain. When this process is sluggish or uneven, dead cells build up on the surface and stick together inside pores. The result is clogs, breakouts, rough texture, and a dull complexion. Retinoids speed up and normalize this cycle, which keeps pores clear and skin smoother and brighter. Faster turnover also means pigmented cells shed sooner, so dark spots, uneven tone, and leftover acne marks fade faster. That's why it's been a go-to acne treatment for decades, long before anyone used it for wrinkles.",
+    body: "The outer layer of your skin is always renewing itself. New cells form underneath, rise to the surface, and the old cells slough off onto your clothes or bedding or go down the shower drain. When this process is sluggish or uneven, dead cells build up on the surface and stick together inside pores. The result is clogs, breakouts, rough texture, and a dull complexion. Retinoids speed up and normalize this cycle, which keeps pores clear and skin smoother and brighter. Faster turnover also means pigmented cells shed sooner, so dark spots, uneven tone, and leftover acne marks fade faster.",
   },
 ];
 
@@ -103,7 +103,8 @@ const tretinoinWarnings = [
 ];
 
 const headingClass =
-  "text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200";
+  // mt-16 always, except directly under a <Badge> (the badge has the gap).
+  "mt-16 [[data-badge]+&]:mt-0 text-3xl font-semibold tracking-tight text-pretty text-zinc-800 dark:text-zinc-200";
 
 export default function Information() {
   return (
@@ -116,10 +117,10 @@ export default function Information() {
           What is Tretinoin? What is even the point of this web page?
         </h2>
         <p className="mt-8 text-xl/8 dark:text-zinc-300">
-          Having a youthful glowing complexion improves quality of life and
-          that is a fact. Most topical skincare products claim to deliver this
-          result but fail to do so. Tretinoin will noticeably improve your
-          complexion if used correctly in a proper routine.
+          Having a youthful glowing complexion improves quality of life and that
+          is a fact. Most topical skincare products claim to deliver this result
+          but fail to do so. Tretinoin will noticeably improve your complexion
+          if used correctly in a proper routine.
         </p>
         <p className="mt-8 text-xl/8 dark:text-zinc-300">
           I&apos;ve watched dozens of hours of skincare videos and tried dozens
@@ -138,7 +139,7 @@ export default function Information() {
           the process in the most effective way possible.
         </p>
 
-        <h3 className={`mt-16 ${headingClass}`}>What is skincare?</h3>
+        <h3 className={headingClass}>What is skincare?</h3>
         <p className="mt-6">
           Skincare is caring for your skin. How does one care for their skin?
           Well, in addition to all the topical products you put on your face and
@@ -166,7 +167,7 @@ export default function Information() {
           one of 3 main categories.
         </p>
 
-        <h3 className={`mt-16 ${headingClass}`}>
+        <h3 className={headingClass}>
           My skincare only needs 3 steps? Does that mean I only need 3 products?
           Which ones?
         </h3>
@@ -200,7 +201,7 @@ export default function Information() {
           products for you.
         </p>
 
-        <h3 className={`mt-16 ${headingClass}`}>
+        <h3 className={headingClass}>
           Great, so what is the big deal about Tretinoin? Why should this be the
           nucleus of my routine?
         </h3>
@@ -240,7 +241,7 @@ export default function Information() {
           ))}
         </ol>
 
-        <h3 className={`mt-16 ${headingClass}`}>
+        <h3 className={headingClass}>
           Ok, if there are so many over-the-counter retinoid options, why go
           through the trouble of getting a Tretinoin prescription?
         </h3>
@@ -312,7 +313,7 @@ export default function Information() {
           retinoids for the reasons mentioned above.
         </p>
 
-        <h3 className={`mt-16 ${headingClass}`}>
+        <h3 className={headingClass}>
           Is a tretinoin prescription expensive?
         </h3>
         <p className="mt-6">
@@ -323,7 +324,7 @@ export default function Information() {
           you are good to go.
         </p>
 
-        <h3 className={`mt-16 ${headingClass}`}>
+        <h3 className={headingClass}>
           So what is the main takeaway here before we move on to side effects,
           warnings, and other stuff?
         </h3>
@@ -332,7 +333,7 @@ export default function Information() {
           cleanse, treat, and protect. Broadly speaking, any topical product out
           there will target one of these three steps. Tretinoin is the highest
           percentage, most effective product to use for your step 2 product. You
-          also need to find a good cleanser for step 1 and, for step 2, a
+          also need to find a good cleanser for step 1 and, for step 3, a
           moisturizer, a sunscreen, or a product that combines the two. Some
           suggestions are included below but, before that, let&apos;s talk about
           how NOT to use Tretinoin.
@@ -340,7 +341,7 @@ export default function Information() {
 
         {/* ── Be careful! (warnings) ── */}
         <Badge color="amber" className="mt-16 mb-4">
-          Be smart
+          How to use it
         </Badge>
         <h3 className={headingClass}>
           How do I use Tretinoin properly? What do I need to watch out for?
@@ -366,73 +367,26 @@ export default function Information() {
             </li>
           ))}
         </ol>
-        <figure className="mt-10 border-l border-amber-600 pl-9 dark:border-sky-400">
-          <blockquote className="font-semibold text-zinc-800 dark:text-zinc-200">
-            <p>
-              &ldquo;Vel ultricies morbi odio facilisi ultrices accumsan donec
-              lacus purus. Lectus nibh ullamcorper ac dictum justo in euismod.
-              Risus aenean ut elit massa. In amet aliquet eget cras. Sem
-              volutpat enim tristique.&rdquo;
-            </p>
-          </blockquote>
-          <figcaption className="mt-6 flex gap-x-4">
-            <Image
-              alt=""
-              src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              width={24}
-              height={24}
-              className="mt-1 size-6 flex-none rounded-full bg-zinc-200 dark:bg-zinc-800"
-            />
-            <div>
-              <strong className="font-semibold text-zinc-800 dark:text-zinc-200">
-                Maria Hill
-              </strong>{" "}
-              – Marketing Manager
-            </div>
-          </figcaption>
-        </figure>
-        <p className="mt-10">
-          Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
-          enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
-          praesent donec est. Odio penatibus risus viverra tellus varius sit
-          neque erat velit.
-        </p>
 
         {/* ── Template filler below ── */}
         <figure className="mt-16">
           <Image
-            alt=""
-            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=80&facepad=3"
-            width={1310}
-            height={873}
+            alt="Tube of tretinoin cream on a folded towel"
+            src="/images/skincare-routine.jpg"
+            width={768}
+            height={1024}
             sizes="(min-width: 768px) 768px, 100vw"
-            className="aspect-video rounded-xl bg-zinc-200 object-cover dark:bg-zinc-800"
+            // Portrait photo in a 16:9 frame: crop low so the tube stays in view.
+            className="aspect-video rounded-xl bg-zinc-200 object-cover object-[50%_68%] dark:bg-zinc-800"
           />
-          <figcaption className="mt-4 flex gap-x-2">
+          {/* <figcaption className="mt-4 flex gap-x-2">
             <InformationCircleIcon
               aria-hidden="true"
               className="mt-1.5 size-5 flex-none text-zinc-400 dark:text-zinc-600"
             />
             Faucibus commodo massa rhoncus, volutpat.
-          </figcaption>
+          </figcaption> */}
         </figure>
-        <h3 className={`mt-16 ${headingClass}`}>
-          Everything you need to get up and running
-        </h3>
-        <p className="mt-6">
-          Purus morbi dignissim senectus mattis adipiscing. Amet, massa quam
-          varius orci dapibus volutpat cras. In amet eu ridiculus leo sodales
-          cursus tristique. Tincidunt sed tempus ut viverra ridiculus non
-          molestie. Gravida quis fringilla amet eget dui tempor dignissim.
-          Facilisis auctor venenatis varius nunc, congue erat ac. Cras fermentum
-          convallis quam.
-        </p>
-        <p className="mt-8">
-          Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
-          enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
-          praesent donec est. Odio penatibus risus viverra tellus varius sit
-          neque erat velit.
-        </p>
       </FadeIn>
     </section>
   );

@@ -21,7 +21,11 @@ export default function Badge({
   children: ReactNode;
 }) {
   return (
-    <p className={`w-fit rounded-full px-2 ring-1 ${colors[color]} ${className}`}>
+    // data-badge lets the heading right after a badge drop its own top margin.
+    <p
+      data-badge
+      className={`w-fit rounded-full px-2 ring-1 ${colors[color]} ${className}`}
+    >
       {children}
     </p>
   );
