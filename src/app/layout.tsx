@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Tretinoin Guide — The Simplest Base for Better Skin",
+  title: "Skincare Stuff",
   description:
     "A plain-language guide to tretinoin: what it does, the benefits, the drawbacks, a simple routine, and videos from doctors. For informational purposes only.",
 };
